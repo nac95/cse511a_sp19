@@ -358,14 +358,14 @@ def cornersHeuristic(state, problem):
     it should be admissible (as well as consistent).
 
     """
+ "*** YOUR CODE HERE ***"
     corners = problem.corners # These are the corner coordinates
     walls = problem.walls # These are the walls of the maze, as a Grid (game.py)
     currentState, passedCorner = state
     if currentState in corners:
         passedCorner.append(currentState)
         return 0    
-    # if len(passedCorner) == 4:
-    #     return 0 
+    
     unpassedCorner = []
     for corner in corners:
        if corner not in passedCorner:
@@ -374,95 +374,6 @@ def cornersHeuristic(state, problem):
     for corner in unpassedCorner:
         distance.append(mazeDistance(currentState, corner, problem.startingGameState))
     return min(distance)
-    # distance = {}
-    # for corner in unpassedCorner:
-    #     distance[corner] = util.manhattanDistance(currentState, corner)
-    #     cornerToRemove = min(distance, key = distance.get)
-    # minDistance = distance[cornerToRemove]
-    # unpassedCorner.remove(cornerToRemove)
-    # currentState = cornerToRemove
-    # while len(unpassedCorner) > 0:
-    #     distance = {}
-    #     for corner in unpassedCorner:
-    #         distance[corner] = util.manhattanDistance(currentState, corner)
-    #         cornerToRemove = min(distance, key = distance.get)
-    #     newDistance = distance[cornerToRemove]
-    #     unpassedCorner.remove(cornerToRemove)
-    #     currentState = cornerToRemove
-    #     minDistance += newDistance
-    # return minDistance
-
-#     distance = []
-#     priorityQueue = util.PriorityQueue()
-#     state = problem.getStartState()
-#     priorityQueue.push((state,[],0),0)
-#     checkedDictionary = {}
-# #     checkSet = set()
-#     while len(unpassedCorner) > 0:
-#         if priorityQueue.isEmpty():
-#             return
-#         (node,path,cost)=priorityQueue.pop()
-#         if problem.isGoalState(node):
-#         	passedCorner.append(node[0])
-#         	unpassedCorner.remove(node[0])
-#                 return cost
-#         if  node not in checkedDictionary.keys():
-# 		checkedDictionary.update({node:node})
-# #             checkSet.add(node)
-# 	for successor,action,stepCost in problem.getSuccessors(node): 
-# 		if successor not in checkedDictionary.keys():              
-# 			priorityQueue.push(((successor,passedCorner),path+[action],cost+stepCost),cost+stepCost)
-#     return 0
-    # "*** YOUR CODE HERE ***"
-    # currentState, passedCorner = state
-#     if currentState in corners:
-# 	return 0    
-#     if len(passedCorner) == 4:
-# 	return 0 
-#     unpassedCorner = []
-#     for corner in corners:
-# 	if corner not in passedCorner:
-# 		unpassedCorner.append(corner)
-    # distance = []
-    # if len(unpassedCorner) == 1:
-    #     return util.manhattanDistance(currentState, corner)
-    # elif len(unpassedCorner) == 2:
-    #     return min(util.manhattanDistance(currentState, unpassedCorner[0]), util.manhattanDistance(currentState, unpassedCorner[1])) + util.manhattanDistance(unpassedCorner[0], unpassedCorner[1])
-    # elif len(unpassedCorner) == 3:
-    #     result = 0
-    #     a = util.manhattanDistance(unpassedCorner[0], unpassedCorner[1])
-    #     b = util.manhattanDistance(unpassedCorner[1], unpassedCorner[2])
-    #     c = util.manhattanDistance(unpassedCorner[0], unpassedCorner[2])
-    #     if a < b:
-    #         if a < c:
-    #             result += a
-    #             if b < c:
-    #                 result += b
-    #             else:
-    #                 result += c
-    #         else:
-    #             result += c
-    #             result += a
-    #     else:
-    #         if b < c:
-    #             result += b
-    #             if a < c:
-    #                 result += a
-    #             else:
-    #                 result += c
-    #         else:
-    #             result += c
-    #             result += b
-    #     result += min(util.manhattanDistance(currentState, unpassedCorner[0]), util.manhattanDistance(currentState, unpassedCorner[1]), util.manhattanDistance(currentState, unpassedCorner[2]))
-    #     return result
-    # elif len(unpassedCorner) == 4:
-    #     return min(util.manhattanDistance(currentState, unpassedCorner[0]), util.manhattanDistance(currentState, unpassedCorner[1]), util.manhattanDistance(currentState, unpassedCorner[2]), util.manhattanDistance(currentState, unpassedCorner[3]))
-
- #    distance = []
- #    for corner in unpassedCorner:
-	# distance.append(mazeDistance(currentState, corner, problem.startingGameState))
- #    return min(distance)
-# helper mathod
    
 
 class AStarCornersAgent(SearchAgent):
